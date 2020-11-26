@@ -135,3 +135,4 @@ function f1(num_str){
     }
 }
 f1(5);
+document.write("Other exercices >> Look in Console ");
