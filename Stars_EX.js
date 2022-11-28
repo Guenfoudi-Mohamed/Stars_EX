@@ -136,3 +136,44 @@ function f1(num_str){
 }
 f1(5);
 document.write("<h1><mark>Other exercices >> Look in Console </mark></h1>");
+
+
+
+/*
+  12354 
+  12345 
+  12453 
+  12435 
+  12543
+  ...
+*/
+function numberPrint(num){
+    let arr1 = [];
+    for(let i = 0;i<Number(String(num).length);i++){
+        arr1[i] = String(num)[i];
+    }
+    let counter = 0;
+    for(let t = 1;t<=String(num).length;t++){
+        for(let y = 2;y<=String(num).length;y++){
+            for(let x = 2;x>=0;x--){
+                for(let i = 0;i<1;i++){
+                    [arr1[arr1.length-1],arr1[arr1.length-2]]=[arr1[arr1.length-2],arr1[arr1.length-1]];
+                    console.log(arr1.join(''));
+                    [arr1[arr1.length-2],arr1[arr1.length-1]]=[arr1[arr1.length-1],arr1[arr1.length-2]];
+                    console.log(arr1.join(''));
+                    // counter+=2; 
+                }
+                if(x == 0){continue;}
+                [arr1[arr1.length-3],arr1[arr1.length-x]]=[arr1[arr1.length-x],arr1[arr1.length-3]];
+            }
+            arr1 = [arr1[0],...arr1.slice(1,arr1.length).sort(function(a,b){return a-b;})]
+            if(y == String(num).length){continue;}
+            [arr1[1],arr1[y]]=[arr1[y],arr1[1]];
+        }
+        arr1 = [arr1[0],arr1[1],...arr1.slice(2,arr1.length).sort(function(a,b){return a-b;})]
+        if(t == String(num).length){continue;}
+        [arr1[0],arr1[t]]=[arr1[t],arr1[0]];
+    }
+    // console.log(counter);
+}
+numberPrint(12345);
